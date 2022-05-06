@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 18:11:44 by aamoussa          #+#    #+#             */
-/*   Updated: 2021/11/22 19:27:28 by aamoussa         ###   ########.fr       */
+/*   Created: 2021/11/04 09:14:51 by aamoussa          #+#    #+#             */
+/*   Updated: 2022/05/06 22:42:21 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "pipex.h"
 
-int	ft_isdigit(int c)
+char	*ft_strchr(const char *s, int c)
 {
-	if ((c >= 48 && c <= 57))
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)(s + i));
+	return (NULL);
 }

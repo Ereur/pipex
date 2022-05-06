@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 19:12:15 by aamoussa          #+#    #+#             */
-/*   Updated: 2021/11/22 19:41:47 by aamoussa         ###   ########.fr       */
+/*   Created: 2021/11/07 20:57:27 by aamoussa          #+#    #+#             */
+/*   Updated: 2022/05/06 22:42:29 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "pipex.h"
 
 static void	ft_strcpy(char *dst, const char *src, size_t size)
 {
@@ -19,34 +19,29 @@ static void	ft_strcpy(char *dst, const char *src, size_t size)
 	i = 0;
 	if (size > 0)
 	{
-		while (src[i] && i < (size - 1))
+		while (src[i] && i < (size))
 		{
 			dst[i] = src[i];
 			i++;
 		}
-		dst[i] = 0;
 	}
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*ptr;
+	int		s1_len;
+	int		s2_len;
 
-	if (!s)
+	if (!s1 || !s2)
 		return (NULL);
-	if (start >= ft_strlen(s) || len == 0)
-	{
-		ptr = (char *)malloc(sizeof (char) * 1);
-		*ptr = '\0';
-		return (ptr);
-	}
-	if (len > ft_strlen(s))
-	{
-		len = ft_strlen(s);
-	}
-	ptr = (char *)malloc(len + 1);
-	if (!ptr || !len)
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	ptr = (char *)malloc(s1_len + s2_len + 1);
+	if (!ptr)
 		return (NULL);
-	ft_strcpy(ptr, s + start, len + 1);
+	ft_strcpy(ptr, s1, s1_len);
+	ft_strcpy(ptr + s1_len, s2, s2_len);
+	ptr[s1_len + s2_len] = 0;
 	return (ptr);
 }

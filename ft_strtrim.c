@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 19:16:59 by aamoussa          #+#    #+#             */
-/*   Updated: 2021/11/22 19:29:26 by aamoussa         ###   ########.fr       */
+/*   Created: 2021/11/08 10:57:09 by aamoussa          #+#    #+#             */
+/*   Updated: 2022/05/06 22:42:44 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "pipex.h"
 
-t_list	*ft_lstlast(t_list *lst)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-	{
-		lst = lst->next;
-	}
-	return (lst);
+	size_t	start;
+	size_t	end;
+
+	if (!s1 || !set)
+		return (0);
+	start = 0;
+	while (ft_strchr(set, s1[start]) && s1[start])
+		start++;
+	end = ft_strlen(s1) - 1;
+	while (ft_strchr(set, s1[end]) && end)
+		end--;
+	return (ft_substr(s1, start,
+			(ft_strlen(s1) - start - (ft_strlen(s1) - end) + 1)));
 }
