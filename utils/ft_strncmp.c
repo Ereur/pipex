@@ -6,11 +6,11 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 09:55:39 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/06 22:42:39 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/09 11:31:27 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 static int	cmp_char(unsigned char c1, unsigned char c2)
 {

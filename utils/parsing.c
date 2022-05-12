@@ -6,11 +6,11 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:32:09 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/06 19:11:28 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/09 13:57:28 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 static	char	**parse_env_paths(char **envp)
 {
@@ -27,7 +27,7 @@ static	char	**parse_env_paths(char **envp)
 		tmp = paths[i];
 		paths[i] = ft_strjoin(paths[i], "/");
 		if (!paths[i])
-			error("strjoin failed", 2);
+			error("strjoin failed", NULL, 2);
 		free(tmp);
 		i++;
 	}
