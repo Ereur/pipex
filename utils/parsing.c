@@ -6,17 +6,39 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:32:09 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/09 13:57:28 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/15 10:26:19 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-static	char	**parse_env_paths(char **envp)
+pid_t	my_fork(void)
+{
+	pid_t	i;
+
+	i = fork();
+	if (i < 0)
+	{
+		perror("error");
+		exit(1);
+	}
+	return (i);
+}
+
+int	creat_outfile(char *outfile)
+{
+	int	fd;
+
+	fd = open(outfile, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	return (fd);
+}
+
+static char	**parse_env_paths(char **envp)
 {
 	int		i;
 	char	**paths;
 	char	*tmp;
+
 	i = 0;
 	while (ft_strncmp("PATH", envp[i], 4) && envp[i])
 		i++;
@@ -31,7 +53,7 @@ static	char	**parse_env_paths(char **envp)
 		free(tmp);
 		i++;
 	}
-	return(paths);
+	return (paths);
 }
 
 static void	check_paths(char **cmd, char **paths)
@@ -54,7 +76,7 @@ static void	check_paths(char **cmd, char **paths)
 	}
 }
 
-char	**parsing(char *cmd,char **envp)
+char	**parsing(char *cmd, char **envp)
 {
 	char	**cmd_args;
 	char	**paths;
@@ -69,5 +91,5 @@ char	**parsing(char *cmd,char **envp)
 	while (paths[i])
 		free(paths[i++]);
 	free(paths);
-	return(cmd_args);
+	return (cmd_args);
 }
