@@ -7,7 +7,7 @@ NAME = pipex.a
 NAME_BONUS = pipex_bonus.a 
 OBJS = $(SRCS:.c=.o)
 AR = ar rc
-B_SRCS = ./pipx_bonus/pipex_bonus.c ./pipx_bonus/process.c ./utils/parsing.c ./utils/ft_substr.c ./utils/ft_strtrim.c ./utils/ft_strncmp.c ./utils/ft_strlen.c ./utils/ft_strjoin.c ./utils/ft_strchr.c ./utils/ft_split.c ./utils/error.c
+B_SRCS = ./pipx_bonus/pipex_bonus.c ./pipx_bonus/process.c ./utils/parsing.c ./utils/ft_substr.c ./utils/ft_strtrim.c ./utils/ft_strncmp.c ./utils/ft_strlen.c ./utils/ft_strjoin.c ./utils/ft_strchr.c ./utils/ft_split.c ./utils/error.c ./utils/get_next_line_utils.c .//pipx_bonus/get_next_line.c
 
 B_OBJS = $(B_SRCS:.c=.o)
 
@@ -22,7 +22,7 @@ $(NAME): $(OBJS)
 	@rm -rf $(NAME_BONUS)
 	@echo $(CURSIVE)$(GRAY) "-MAKING pipex..." $(NONE)
 	@$(AR) $(NAME) $(OBJS)
-	@$(CC) $(CFLAGS) $(NAME) -o pipex
+	@$(CC) $(CFLAGS) $(NAME) -o pipex -fsanitize=address -g
 	@echo  $(GREEN) "DONE!"
 
 bonus: $(NAME_BONUS)

@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:32:09 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/15 10:26:19 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:43:20 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,15 @@ static char	**parse_env_paths(char **envp)
 	char	*tmp;
 
 	i = 0;
-	while (ft_strncmp("PATH", envp[i], 4) && envp[i])
+	paths = NULL;
+	while (envp[i] && ft_strncmp("PATH", envp[i], 4))
+	{
 		i++;
-	paths = ft_split(&envp[i][5], ':');
+	}
+	if (envp[i])
+		paths = ft_split(&envp[i][5], ':');
 	i = 0;
-	while (paths[i])
+	while (paths && paths[i])
 	{
 		tmp = paths[i];
 		paths[i] = ft_strjoin(paths[i], "/");
@@ -62,8 +66,8 @@ static void	check_paths(char **cmd, char **paths)
 	char	*tmp;
 
 	i = 0;
-	while (paths[i])
-	{
+	while (paths && paths[i])
+	{	
 		tmp = ft_strjoin(paths[i], cmd[0]);
 		if (!access(tmp, X_OK))
 		{
@@ -87,8 +91,17 @@ char	**parsing(char *cmd, char **envp)
 	if (!cmd_args)
 		exit(1);
 	paths = parse_env_paths(envp);
+	// printf("%p\n", paths);
 	check_paths(cmd_args, paths);
-	while (paths[i])
+	
+	// if (check_slash(cmd_args[0]))
+	// {
+	// 	while (paths && paths[i])
+	// 		free(paths[i++]);
+	// 	free(paths);
+	// 	error("no such file or directory", cmd, 2);
+	// }
+	while (paths && paths[i])
 		free(paths[i++]);
 	free(paths);
 	return (cmd_args);

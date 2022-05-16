@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:28:35 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/15 10:29:29 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/16 10:01:30 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <string.h>
 
 char	**parsing(char *cmd, char **envp);
 int		error(char *msg, char *cmd, int fd);
@@ -30,9 +31,11 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 pid_t	my_fork(void);
+short	check_slash(char *cmnd);
 
 /****************************** BONUS**************************************/
 
 void	ft_process(int i, int ac, char **argv, char **envp);
 int		creat_outfile(char *outfile);
+char	*get_next_line(int fd);
 #endif

@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 05:12:53 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/14 12:22:56 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:47:06 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,7 @@ int	main(int ac, char **argv, char **envp)
 	{
 		infile = open(argv[1], O_RDONLY);
 		if (infile == -1)
-		{
 			perror("error");
-			exit(1);
-		}
 		pipe(end);
 		i = my_fork();
 		if (i == 0)
@@ -77,3 +74,4 @@ int	main(int ac, char **argv, char **envp)
 	}
 	return (0);
 }
+///
