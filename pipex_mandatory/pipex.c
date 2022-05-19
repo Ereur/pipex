@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 05:12:53 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/16 19:47:06 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:57:45 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	sec_cmd(char **argv, int *end, char **envp)
 	int		outfile;
 	char	**cmd2;
 
-	outfile = creat_outfile(argv[4]);
+	outfile = creat_outfile(argv[4], NULL);
 	cmd2 = parsing(argv[3], envp);
 	if (dup2(outfile, 1) < 0)
 		error("failled to dup outfile\n", NULL, 2);

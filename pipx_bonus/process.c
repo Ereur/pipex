@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 01:33:01 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/16 10:31:26 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:43:06 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	child_process(int *end, char *cmd, char **envp)
 		error("command not found: ", cmds_with_args[0], 2);
 }
 
-void	last_proces(char *file, char *cmd, char **envp)
+void	last_proces(char *file, char *cmd, char *here_doc, char **envp)
 {
 	int		outfile;
 	char	**cmds_with_args;
 
-	outfile = creat_outfile(file);
+	outfile = creat_outfile(file, here_doc);
 	cmds_with_args = parsing(cmd, envp);
 	if (dup2(outfile, 1) < 0)
 		error("failled to dup outfile\n", NULL, 2);
@@ -47,7 +47,7 @@ void	ft_process(int i, int ac, char **argv, char **envp)
 	pipe(end);
 	id = my_fork();
 	if (id == 0 && i == ac - 2)
-		last_proces(argv[i + 1], argv[i], envp);
+		last_proces(argv[i + 1], argv[i], argv[1], envp);
 	if (id == 0)
 		child_process(end, argv[i], envp);
 	dup2(end[0], 0);

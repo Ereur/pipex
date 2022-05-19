@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:32:09 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/16 19:43:20 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:51:56 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ pid_t	my_fork(void)
 	return (i);
 }
 
-int	creat_outfile(char *outfile)
+int	creat_outfile(char *outfile, char *here_doc)
 {
 	int	fd;
 
-	fd = open(outfile, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (!strncmp("here_doc", here_doc, 8))
+		fd = open(outfile, O_CREAT | O_RDWR | O_APPEND, 0644);
+	else
+		fd = open(outfile, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	return (fd);
 }
 
@@ -91,16 +94,7 @@ char	**parsing(char *cmd, char **envp)
 	if (!cmd_args)
 		exit(1);
 	paths = parse_env_paths(envp);
-	// printf("%p\n", paths);
 	check_paths(cmd_args, paths);
-	
-	// if (check_slash(cmd_args[0]))
-	// {
-	// 	while (paths && paths[i])
-	// 		free(paths[i++]);
-	// 	free(paths);
-	// 	error("no such file or directory", cmd, 2);
-	// }
 	while (paths && paths[i])
 		free(paths[i++]);
 	free(paths);

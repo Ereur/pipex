@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:28:35 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/16 10:01:30 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:43:57 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ short	check_slash(char *cmnd);
 /****************************** BONUS**************************************/
 
 void	ft_process(int i, int ac, char **argv, char **envp);
-int		creat_outfile(char *outfile);
+int		creat_outfile(char *outfilem, char *here_doc);
 char	*get_next_line(int fd);
 #endif
