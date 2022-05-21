@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 18:32:09 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/19 13:51:56 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/21 10:33:25 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	creat_outfile(char *outfile, char *here_doc)
 {
 	int	fd;
 
-	if (!strncmp("here_doc", here_doc, 8))
+	if (here_doc && !strncmp("here_doc", here_doc, 8))
 		fd = open(outfile, O_CREAT | O_RDWR | O_APPEND, 0644);
 	else
 		fd = open(outfile, O_CREAT | O_RDWR | O_TRUNC, 0644);

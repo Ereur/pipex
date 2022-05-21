@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:04:44 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/19 13:36:56 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/21 11:46:56 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,26 @@ int	main(int ac, char **argv, char **envp)
 {
 	int		i;
 	int		infile;
-	int		*end;
 
-	end = NULL;
 	i = 2;
 	if (ac < 5)
 		error("invalid arguments", NULL, 2);
-	if (!strncmp("here_doc", argv[1], 8))
-	{	
+	if (!strncmp("here_doc", argv[1], 8) && i++)
 		here_doc(argv[2]);
-		i++;
-	}
 	else
 	{
 		infile = open(argv[1], O_RDONLY);
 		if (infile == -1)
+		{	
 			perror("Error");
-		if (dup2(infile, 0) < 0)
-			error("dup failed infile \n", NULL, 2);
+			i++;
+		}
+		dup2(infile, 0);
 		close(infile);
 	}
 	while (i < ac - 1)
 		ft_process(i++, ac, argv, envp);
+	while (wait(NULL) != -1)
+		;
 	return (0);
 }

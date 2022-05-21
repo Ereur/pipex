@@ -22,7 +22,7 @@ $(NAME): $(OBJS)
 	@rm -rf $(NAME_BONUS)
 	@echo $(CURSIVE)$(GRAY) "-MAKING pipex..." $(NONE)
 	@$(AR) $(NAME) $(OBJS)
-	@$(CC) $(CFLAGS) $(NAME) -o pipex -fsanitize=address -g
+	@$(CC) $(CFLAGS) $(NAME) -o pipex -g -fsanitize=address
 	@echo  $(GREEN) "DONE!"
 
 bonus: $(NAME_BONUS)

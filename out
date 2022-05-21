@@ -1,0 +1,12 @@
+Makefile
+PIPEX_TESTER
+in_file
+infile
+out
+outfile
+pipex
+pipex.h
+pipex_bonus.a
+pipex_mandatory
+pipx_bonus
+utils
