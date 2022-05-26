@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 20:57:27 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/09 11:31:09 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:19:40 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		s1_len;
 	int		s2_len;
 
+	ptr = NULL;
 	if (!s1 || !s2)
 		return (NULL);
 	s1_len = ft_strlen(s1);
