@@ -6,7 +6,7 @@
 /*   By: aamoussa <aamoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:04:44 by aamoussa          #+#    #+#             */
-/*   Updated: 2022/05/26 17:29:01 by aamoussa         ###   ########.fr       */
+/*   Updated: 2022/05/27 09:11:39 by aamoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	here_doc(char *lim)
 
 	pipe(end);
 	line = get_next_line(0);
-	lim = ft_strjoin(lim,"\n");
-	if (ft_strncmp(lim, line, ft_strlen(line)))	
+	lim = ft_strjoin(lim, "\n");
+	if (ft_strncmp(lim, line, ft_strlen(line)))
 		write(end[1], line, ft_strlen(line));
 	while (ft_strncmp(lim, line, ft_strlen(line)))
 	{	

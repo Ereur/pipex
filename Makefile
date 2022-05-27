@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 SRCS = ./pipex_mandatory/pipex.c ./utils/parsing.c ./utils/ft_substr.c ./utils/ft_strtrim.c ./utils/ft_strncmp.c ./utils/ft_strlen.c ./utils/ft_strjoin.c ./utils/ft_strchr.c ./utils/ft_split.c ./utils/error.c
 # FUNC_BONUS = checker.c ./push_swap_utils/get_next_line.c ./push_swap_utils/ft_check_args.c ./push_swap_utils/error_handler.c \
 # 			 ./push_swap_utils/operations.c ./push_swap_utils/operations1.c ./push_swap_utils/libft/libft.a
@@ -22,7 +22,7 @@ $(NAME): $(OBJS)
 	@rm -rf $(NAME_BONUS)
 	@echo $(CURSIVE)$(GRAY) "-MAKING pipex..." $(NONE)
 	@$(AR) $(NAME) $(OBJS)
-	@$(CC) $(CFLAGS) $(NAME) -o pipex -g
+	@$(CC) $(CFLAGS) $(NAME) -o pipex
 	@echo  $(GREEN) "DONE!"
 
 bonus: $(NAME_BONUS)

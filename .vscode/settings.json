@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"pipex.h": "c",
-		"fcntl.h": "c"
-	},
-	"window.autoDetectColorScheme": false,
-	"workbench.preferredHighContrastColorTheme": "Default High Contrast"
-}
